@@ -1,4 +1,3 @@
-//express server
 const express = require('express');
 const songInfo = require("./songInfo.json");
 const fs = require('fs');
@@ -16,7 +15,7 @@ app.post('/gd-song-prx/getGJSongInfo.php', (req, res) => {
     {
         console.log("Song found in proxy");
         let filesize = (fs.statSync("./songs/" + songInfo[req.body.songID].filename).size / (1024 * 1024));
-        res.send("1~|~" + req.body.songID + "~|~2~|~" + songInfo[req.body.songID].name + "~|~3~|~2159~|~4~|~" + songInfo[req.body.songID].author +"~|~5~|~" + filesize.toString().slice(0, 5));
+        res.send("1~|~" + req.body.songID + "~|~2~|~" + songInfo[req.body.songID].name + "~|~3~|~2159~|~4~|~" + songInfo[req.body.songID].author +"~|~5~|~" + filesize.toString().slice(0, 5)+"~|~10~|~http://localhost:3000/download/"+req.body.songID);
     } else {
         console.log("Forwarding request to boomlings.com");
         var postData = 'songID=' + req.body.songID + "&secret=Wmfd2893gb7";
@@ -50,25 +49,15 @@ app.post('/gd-song-prx/getGJSongInfo.php', (req, res) => {
     } 
 });
 
-app.get('/prx/audio/download/*', (req, res) => {
+app.get('/download/*', (req, res) => {
     let songID = req.url.split("/")[4];
     console.log("Downloading song ID " + songID);
     if(songInfo[songID] != undefined)
     {
         res.download("./songs/" + songInfo[songID].filename);
     } else {
-        let request = https.request("https://www.newgrounds.com/audio/download/" + songID, (res) => {
-            let data = '';
-            resp.on('data', (chunk) => {
-                data += chunk;
-            });
-            resp.on('end', () => {
-                res.send(data);
-            });
-        }).on("error", (err) => {
-            console.log("Error: " + err.message);
-        });
+        res.send("-1");
     } 
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Listening on port ${port}!`));

@@ -86,3 +86,7 @@ typings/
 
 # DynamoDB Local files
 .dynamodb/
+
+gd-song-redirect/build/
+gd-song-redirect/.vscode/
+.vscode/
