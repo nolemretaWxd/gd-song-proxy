@@ -6,6 +6,8 @@ Needs to be running every time the game is started.
 
 ## Usage
 * Clone this repository, then run `npm i` to install required libraries
+* Put your .mp3 songs in songs directory
+* Add songs to songInfo.json
 * Somehow patch the game to make requests to localhost instead of boomlings.com for getGJSongInfo.php
 ### Mod (the recommended method)
 (thanks to GD Programming Discord server for helping with this mod, I had no idea what was I trying to do)
@@ -16,9 +18,6 @@ Needs to be running every time the game is started.
 ### Patching manually (the non-modloader method, and not recommended)
 * Open GeometryDash.exe in your hex editor of choice eg. HxD
 * Change `http://www.boomlings.com/database/` to `http://localhost:3000/gd-song-prx/`
-
-* Put your .mp3 songs in songs directory
-* Add songs to songInfo.json
 
 ## songInfo.json syntax
 ```
