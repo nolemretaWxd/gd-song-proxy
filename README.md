@@ -17,7 +17,7 @@ Needs to be running every time the game is started.
 
 ### Patching manually (the non-modloader method, and not recommended)
 * Open GeometryDash.exe in your hex editor of choice eg. HxD
-* Change `http://www.boomlings.com/database/` to `http://localhost:3000/gd-song-prx/`
+* Change `http://www.boomlings.com/database/getGJSongInfo.php` to `http://localhost:3000/gd-song-prx/getGJSongInfo.php`
 
 ## songInfo.json syntax
 ```
