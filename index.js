@@ -50,7 +50,7 @@ app.post('/gd-song-prx/getGJSongInfo.php', (req, res) => {
 });
 
 app.get('/download/*', (req, res) => {
-    let songID = req.url.split("/")[4];
+    let songID = req.url.split("/")[2];
     console.log("Downloading song ID " + songID);
     if(songInfo[songID] != undefined)
     {
